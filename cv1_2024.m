@@ -18,7 +18,7 @@ e2_WGS = (a_WGS*a_WGS - b_WGS*b_WGS)/(a_WGS*a_WGS);
 W_WGS = sqrt(1-e2_WGS*(sin(phir_WGS))^2);
 N_WGS = a_WGS/W_WGS;
 
-%Prostorove geocentricke souradnice
+%Prostorove geocentricke souradnice, WGS84
 X_WGS =  N_WGS*cos(phir_WGS)*cos(lar_WGS);
 Y_WGS =  N_WGS*cos(phir_WGS)*sin(lar_WGS);
 Z_WGS =  N_WGS*(1-e2_WGS)*sin(phir_WGS);
@@ -37,6 +37,27 @@ R = [1,om_z,-om_y;-om_z,1,om_x;om_y,-om_x,1];
 delta = [dx;dy;dz];
 xyz_wgs = [X_WGS;Y_WGS;Z_WGS];
 xyz_bess =m*R*xyz_wgs+delta;
+
+%Prostorove geocentricke souradnice, Besseluv elipsoid
+X_B = xyz_bess(1);
+Y_B = xyz_bess(2);
+Z_B = xyz_bess(3);
+
+%Besselův elipsoid, parametry
+a_B = 6377397.1550;
+b_B = 6356078.9633;
+e2_B = (a_B*a_B - b_B*b_B)/(a_B*a_B);
+
+%Transformace (X, Y, Z)B -> (phi, la)
+lar_B = atan2(Y_B, X_B);
+fir_B = atan2 (Z_B, (1-e2_B)*sqrt(X_B^2+Y_B^2));
+
+%Pricny polomer krivosti
+W_B = sqrt(1-e2_B*(sin(fir_B))^2);
+N_B = a_B/W_B;
+
+
+
 
 
 
