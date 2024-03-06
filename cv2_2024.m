@@ -43,13 +43,3 @@ ur = u * pi /180;
 vr = v * pi /180;
 
 [s4, d4] = uv_to_sd(ur, vr, ukr, vkr);
-
-
-
-
-
-
-
-
-
-
