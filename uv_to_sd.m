@@ -7,5 +7,3 @@ sr = asin(sin(ur)*sin(ukr)+cos(ur)*cos(ukr)*cos(dvr));
 
 %Transformed longitude (quadrant adjustment)
 dr = atan2(cos(ur)*sin(dvr),cos(ur)*sin(ukr)*cos(dvr)-sin(ur)*cos(ukr));
-
-
