@@ -1,9 +1,9 @@
-function [sr, dr] = uv_to_sd(ur, vr, ukr, vkr)
+function [s, d] = uv_to_sd(u, v, uk, vk)
 %Longitude difference
-dvr = vkr-vr;
+dv = vk - v;
 
 %Transformed latitude
-sr = asin(sin(ur).*sin(ukr)+cos(ur).*cos(ukr).*cos(dvr));
+s = asin(sin(u).*sin(uk)+cos(u).*cos(uk).*cos(dv));
 
 %Transformed longitude (quadrant adjustment)
-dr = -atan2(cos(ur).*sin(dvr),cos(ur).*sin(ukr).*cos(dvr)-sin(ur).*cos(ukr));
+d = -atan2(cos(u).*sin(dv),cos(u).*sin(uk).*cos(dv)-sin(u).*cos(uk));

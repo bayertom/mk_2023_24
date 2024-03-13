@@ -1,4 +1,4 @@
-function [x,y] = gnom(R, sr, dr)
+function [x,y] = gnom(R, s, d)
 %Gnomonic projection
-x = R .* tan (pi/2 - sr) .* cos (dr);
-y = R .* tan (pi/2 - sr) .* sin (dr);
+x = R .* tan (pi/2 - s) .* cos (d);
+y = R .* tan (pi/2 - s) .* sin (d);
