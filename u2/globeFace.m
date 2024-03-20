@@ -14,7 +14,7 @@ C = C * pi / 180;
 
 %Plot continents
 [XC, YC] = continents(C, R, uk, vk,u0, proj);
-plot(XC', YC', 'b');
+plot(XC', YC', 'b', 'LineWidth', 2);
 
 %Compute face boundary
 [XB, YB] = boundary(ub, vb, R, uk, vk,u0, proj);
@@ -23,4 +23,5 @@ plot(XC', YC', 'b');
 plot(XB', YB', 'r');
 
 axis equal;
+
 end

@@ -23,5 +23,3 @@ ub = [us, us, us, us, us];
 vb = [0, pi / 2, pi, 3 * pi / 2, 0];
 globeFace(umin, umax, vmin, vmax, Du, Dv, du, dv, R, uk, vk, u0, proj, ub, vb);
 
-
-axis equal;
