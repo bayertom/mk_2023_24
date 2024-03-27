@@ -7,15 +7,16 @@ v = C(:,2);
 [s, d] = uv_to_sd(u, v, uk, vk);
 
 %Find points: s < s_min
-s_min = 5 * pi /180;
+s_min = 10 * pi /180;
 idxs = find(s < s_min);
-s(idxs) = [];
-d(idxs) = [];
+
+%Remove these points
+s(idxs) = []; d(idxs) = [];
 
 %Project continents
 [XC,YC] = proj(R, s, d);
 
-
+end
 
 
 
