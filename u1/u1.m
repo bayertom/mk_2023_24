@@ -53,7 +53,7 @@ lar_B = atan2(Y_B, X_B);
 phir_B = atan2 (Z_B, (1-e2_B)*sqrt(X_B^2+Y_B^2));
 
 %Reduction to Ferro
-larf = lar_B + (17+2/3)*pi/180;
+larf_B = lar_B + (17+2/3)*pi/180;
 
 %Gaussian conformal projection, parameters
 phir_0 = 49.5 * pi/180;
@@ -63,6 +63,12 @@ kn = (tan(phir_0/2 + pi/4))^alpha*((1-sqrt(e2_B)*sin(phir_0))/(1+sqrt(e2_B)*sin(
 kd = tan(u0_r/2+pi/4);
 k = kn/kd;
 R = (a_B* sqrt(1-e2_B))/(1-e2_B*(sin(phir_0))^2);
+
+%Gaussian conformal projection,
+arg = 1/k*(tan(phir_B/2+pi/4)*((1-sqrt(e2_B)*sin(phir_B))...
+      /(1+sqrt(e2_B)*sin(phir_B)))^(sqrt(e2_B)/2))^alpha;
+u = 2*(atan(arg)-pi/4);
+v = alpha * larf_B;
 
 %Compute N
 %W_B = sqrt(1-e2_B*(sin(phir_B))^2);
