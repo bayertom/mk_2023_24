@@ -29,7 +29,6 @@ s4 = asin(sin(u4)*sin(uk)+cos(u4)*cos(uk)*cos(v4-vk));
 %True parallel
 s0 = acos(2*cos(s3)/(1+cos(s3)))
 
-
 %Scales
 m1 = cos(s0) / cos(s1)
 m2 = cos(s0) / cos(s2)
