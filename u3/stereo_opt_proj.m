@@ -17,7 +17,7 @@ v1 = 81.8338118*pi/180;
 psi1 = pi/2 - s1;
 
 %Mju
-mju= (2*cos(psi1/2)^2)/(1+cos(psi1/2)^2)
+mju = (2*cos(psi1/2)^2)/(1+cos(psi1/2)^2)
 
 %Psi0
 psi0 = 2*acos(sqrt(mju));
