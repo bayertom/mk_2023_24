@@ -19,7 +19,7 @@ vn = N(:, 2);
 [xn, yn] = stereo_proj(R, sn, dn);
 
 %Plot
-plot(xn, yn,'b');
+plot(xn, yn, 'b', 'LineWidth', 2);
 axis equal;
 
 %Graticule
@@ -35,26 +35,30 @@ proj = @stereo_proj;
 u0 = 0;
 
 %Compute graticule
-[XM, YM, XP, YP, T1, T2] = graticule(umin, umax, vmin, vmax, Du, Dv, du, dv, R, uk, vk, u0, proj);
+[XM, YM, XP, YP] = graticule(umin, umax, vmin, vmax, Du, Dv, du, dv, R, uk, vk, u0, proj);
 
 %Plot graticule
 plot(XM', YM', 'k');
 plot(XP', YP', 'k');
 
-%Points
-[XM1, YM1, XP1, YP1, S1, D1] = graticule(umin, umax, vmin, vmax, Du/10, Dv/10, Du/10, Dv/10, R, uk, vk, u0, proj);
+%Points of the grid
+[ug, vg] = meshgrid(umin : du : umax, vmin : dv : vmax);
+ 
+%Convert to the oblique aspect
+[sg, dg] = uv_to_sd(ug, vg, uk, vk);
+    
+%Project a grid
+[xg, yg] = proj(R, sg, dg);
 
-%Distortion
+%Distortion of grid points
 psi0 = 0.0457874886968716;
-psi = pi/2 - S1;
+psi = pi/2 - sg;
 m = (cos(psi0/2)./cos(psi/2)).^2;
 ny = (m - 1)*1000;
 
 %Contour lines
 dm = 0.1;
-[C,h] = contour(XM1, YM1, ny, [-2: dm: 10], 'LineColor', 'r');
-[C2,h2] = contour(XM1, YM1, ny, [-2: 5*dm: 10], 'LineColor', 'r', 'LineWidth', 2);
+[C,h] = contour(xg, yg, ny, [-2: dm: 10], 'LineColor', 'r');
+[C2,h2] = contour(xg, yg, ny, [-2: 5*dm: 10], 'LineColor', 'r', 'LineWidth', 2, 'labelspacing', 1000);
 clabel(C2, h2, 'Color', 'r');
-
-
 
